@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,20 @@ namespace crud_application
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Order> orders = new List<Order>();
         public MainWindow()
         {
             InitializeComponent();
+            OrderListbox.DataContext = orders;
+            OrderListbox.DisplayMemberPath = "FullInfo";
+        }
+
+        private void GetOrder_Click(object sender, RoutedEventArgs e)
+        {
+            DataAccess db = new DataAccess();
+            orders = db.GetOrders();
+            OrderListbox.DataContext = orders;
+            OrderListbox.DisplayMemberPath = "FullInfo";
         }
     }
 }
