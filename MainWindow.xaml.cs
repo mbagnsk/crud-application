@@ -31,10 +31,11 @@ namespace crud_application
 
         private void GetOrder_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess db = new DataAccess();
+            /*DataAccess db = new DataAccess();
             orders = db.GetOrders();
             OrderListbox.DataContext = orders;
-            OrderListbox.DisplayMemberPath = "FullInfo";
+            OrderListbox.DisplayMemberPath = "FullInfo";*/
+            bool isAdded = DataWriter.NewOrder(5, 5, 5);
         }
     }
 }
