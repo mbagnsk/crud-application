@@ -25,16 +25,20 @@ namespace crud_application
         public MainWindow()
         {
             InitializeComponent();
-            OrderListbox.DataContext = orders;
-            OrderListbox.DisplayMemberPath = "FullInfo";
+            /*OrderListbox.DataContext = orders;
+            OrderListbox.DisplayMemberPath = "FullInfo";*/
         }
 
         private void GetOrder_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess db = new DataAccess();
+            /*DataAccess db = new DataAccess();
             orders = db.GetOrders();
             OrderListbox.DataContext = orders;
-            OrderListbox.DisplayMemberPath = "FullInfo";
+            OrderListbox.DisplayMemberPath = "FullInfo";*/
+            int order = Int16.Parse(idOrder.Text);
+            int client = Int16.Parse(idClient.Text);
+            int employee = Int16.Parse(idEmployee.Text);
+            bool isAdded = DataWriter.NewOrder(order, client, employee);
         }
     }
 }
