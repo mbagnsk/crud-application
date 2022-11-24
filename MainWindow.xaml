@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:crud_application"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Warehouse Manager" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
@@ -27,11 +28,8 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="GetOrder" Content="Add" Grid.Column="1" Grid.Row="1"
-            Click="GetOrder_Click" Margin="10"/>
-        <TextBox x:Name="idOrder" Grid.Column="1" Grid.Row="2" Width="70" Margin="5 0"/>
-        <TextBox x:Name="idClient" Grid.Column="2" Grid.Row="2" Width="70" Margin="5 0"/>
-        <TextBox x:Name="idEmployee" Grid.Column="3" Grid.Row="2" Width="70" Margin="5 0"/>
+        <Button x:Name="GetOrder" Content="Dodaj zamówienie" Grid.Column="1" Grid.Row="1"
+            Click="GetOrder_Click" Margin="5"/>
         <!-- <ListBox x:Name="OrderListbox" Grid.Column="5" Grid.Row="6" Width="Auto"/> -->
     </Grid>
 </Window>

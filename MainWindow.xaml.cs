@@ -34,11 +34,10 @@ namespace crud_application
             /*DataAccess db = new DataAccess();
             orders = db.GetOrders();
             OrderListbox.DataContext = orders;
-            OrderListbox.DisplayMemberPath = "FullInfo";*/
-            int order = Int16.Parse(idOrder.Text);
-            int client = Int16.Parse(idClient.Text);
-            int employee = Int16.Parse(idEmployee.Text);
-            bool isAdded = DataWriter.NewOrder(order, client, employee);
+            OrderListbox.DisplayMemberPath = "FullInfo";*/            
+
+            NewOrderWindow newOrderWindow = new NewOrderWindow();
+            newOrderWindow.Show();
         }
     }
 }
