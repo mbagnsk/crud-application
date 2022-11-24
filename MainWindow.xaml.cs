@@ -39,5 +39,11 @@ namespace crud_application
             NewOrderWindow newOrderWindow = new NewOrderWindow();
             newOrderWindow.Show();
         }
+
+        private void AddCustomerButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddClientWindow addClientWindow = new AddClientWindow();
+            addClientWindow.Show();
+        }
     }
 }

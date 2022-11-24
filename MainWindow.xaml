@@ -30,6 +30,7 @@
 
         <Button x:Name="GetOrder" Content="Dodaj zamówienie" Grid.Column="1" Grid.Row="1"
             Click="GetOrder_Click" Margin="5"/>
-        <!-- <ListBox x:Name="OrderListbox" Grid.Column="5" Grid.Row="6" Width="Auto"/> -->
+        <Button x:Name="AddCustomerButton" Content="Dodaj klienta" Grid.Column="1" Grid.Row="2"
+            Click="AddCustomerButton_Click" Margin="5"/>
     </Grid>
 </Window>

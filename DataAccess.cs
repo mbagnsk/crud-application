@@ -12,9 +12,9 @@ namespace crud_application
     {
         public List<Order> GetOrders()
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("testowaNazwa")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
             {
-                List<Order> output = connection.Query<Order>("Select * from dbo.tabelaTestowa2;").ToList();
+                List<Order> output = connection.Query<Order>("Select * from dbo.CUSTOMERS;").ToList();
                 return output;
             }
         }
