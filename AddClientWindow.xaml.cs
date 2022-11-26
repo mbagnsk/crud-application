@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace crud_application
 {
-    /// <summary>
-    /// Interaction logic for AddClient.xaml
-    /// </summary>
     public partial class AddClientWindow : Window
     {
         public AddClientWindow()
@@ -34,12 +31,11 @@ namespace crud_application
             int phoneNumber = Int32.Parse(PhoneTextBox.Text);
 
             DataWriter.AddClient(CompanyNameTextBox.Text, nip, StreetTextBox.Text, buildingNumber, localNumber, CityTextBox.Text, ZIPCodeTextBox.Text, EmailTextBox.Text, phoneNumber);
+            this.Close();
         }
         private void CloseCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             this.Close();
         }
-
-        
     }
 }
