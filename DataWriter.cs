@@ -62,6 +62,5 @@ namespace crud_application
             }
             return true;
         }
-
     }
 }
