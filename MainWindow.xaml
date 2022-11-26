@@ -28,8 +28,8 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="GetOrder" Content="Dodaj zamówienie" Grid.Column="1" Grid.Row="1"
-            Click="GetOrder_Click" Margin="5"/>
+        <Button x:Name="AddOrderButton" Content="Dodaj zamówienie" Grid.Column="1" Grid.Row="1"
+             Click="AddOrderButton_Click" Margin="5"/>
         <Button x:Name="AddCustomerButton" Content="Dodaj klienta" Grid.Column="1" Grid.Row="2"
             Click="AddCustomerButton_Click" Margin="5"/>
     </Grid>

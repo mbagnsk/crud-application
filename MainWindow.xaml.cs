@@ -28,18 +28,11 @@ namespace crud_application
             /*OrderListbox.DataContext = orders;
             OrderListbox.DisplayMemberPath = "FullInfo";*/
         }
-
-        private void GetOrder_Click(object sender, RoutedEventArgs e)
+        private void AddOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            /*DataAccess db = new DataAccess();
-            orders = db.GetOrders();
-            OrderListbox.DataContext = orders;
-            OrderListbox.DisplayMemberPath = "FullInfo";*/            
-
-            NewOrderWindow newOrderWindow = new NewOrderWindow();
-            newOrderWindow.Show();
+            AddOrderWindow addOrderWindow = new AddOrderWindow();
+            addOrderWindow.Show();
         }
-
         private void AddCustomerButton_Click(object sender, RoutedEventArgs e)
         {
             AddClientWindow addClientWindow = new AddClientWindow();

@@ -10,7 +10,7 @@ namespace crud_application
 {
     public static class DataWriter
     {
-        public static bool NewOrder(int idOrder, int idClient, int idEmployee)
+        public static bool AddOrder(int idOrder, int idClient, int idEmployee)
         {
             using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
             {
