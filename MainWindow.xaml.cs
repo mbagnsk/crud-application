@@ -16,17 +16,11 @@ using System.Windows.Shapes;
 
 namespace crud_application
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        List<Order> orders = new List<Order>();
         public MainWindow()
         {
             InitializeComponent();
-            /*OrderListbox.DataContext = orders;
-            OrderListbox.DisplayMemberPath = "FullInfo";*/
         }
         private void AddOrderButton_Click(object sender, RoutedEventArgs e)
         {
