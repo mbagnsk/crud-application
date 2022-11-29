@@ -17,11 +17,13 @@ namespace crud_application
     /// <summary>
     /// Interaction logic for NewOrderWindow.xaml
     /// </summary>
-    public partial class NewOrderWindow : Window
+    public partial class AddOrderWindow : Window
     {
-        public NewOrderWindow()
+        public AddOrderWindow()
         {
+            IList<Client> Companies = DataAccess.GetClients();
             InitializeComponent();
+            CompaniesComboBox.ItemsSource = Companies;
         }
 
 
@@ -30,12 +32,9 @@ namespace crud_application
             this.Close();
         }
 
-        private void AddNewOrderButton_Click_1(object sender, RoutedEventArgs e)
+        private void AddOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            int order = Int16.Parse(IdOrderTextBox.Text);
-            int client = Int16.Parse(IdClientTextBox.Text);
-            int employee = Int16.Parse(IdEmployeeTextBox.Text);
-            bool isAdded = DataWriter.NewOrder(order, client, employee);
+            int selected = (int)CompaniesComboBox.SelectedValue;
         }
     }
 }
