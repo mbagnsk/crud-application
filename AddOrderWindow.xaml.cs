@@ -24,6 +24,7 @@ namespace crud_application
             
             InitializeComponent();
             IList<Client> Companies = DataAccess.GetClients();
+            IList<Product> Products = DataAccess.GetProducts();
             CompaniesComboBox.ItemsSource = Companies;
         }
 
