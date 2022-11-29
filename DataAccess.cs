@@ -13,7 +13,7 @@ namespace crud_application
     {
         public static IList<Client> GetClients()
         {
-            ComboBoxModel model = new ComboBoxModel();
+            CompaniesComboBoxModel model = new CompaniesComboBoxModel();
             using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
             {
                 connection.Open();

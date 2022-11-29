@@ -21,8 +21,9 @@ namespace crud_application
     {
         public AddOrderWindow()
         {
-            IList<Client> Companies = DataAccess.GetClients();
+            
             InitializeComponent();
+            IList<Client> Companies = DataAccess.GetClients();
             CompaniesComboBox.ItemsSource = Companies;
         }
 

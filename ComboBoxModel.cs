@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace crud_application
 {
-    public class ComboBoxModel
+    public class CompaniesComboBoxModel
     {
         private IList<Client> _clients;
         public IList<Client> Clients
@@ -18,6 +18,21 @@ namespace crud_application
                 return _clients;
             }
             set { _clients = value; }
+        }
+    }
+
+    public class ProductsComboBoxModel
+    {
+        private IList<Product> _procucts;
+        public IList<Product> Products
+        {
+            get
+            {
+                if (_procucts == null)
+                    _procucts = new List<Product>();
+                return _procucts;
+            }
+            set { _procucts = value; }
         }
     }
 }
