@@ -31,9 +31,9 @@ namespace crud_application
             using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
             {
                 connection.Open();
-                SqlDataReader dr = new SqlCommand("SELECT IDProduct, ProductName, ProductDescription from dbo.PRODUCTS", connection).ExecuteReader();
+                SqlDataReader dr = new SqlCommand("SELECT IDProduct, ProductName, ProductDescription, NetPrice, GrossPrice  from dbo.PRODUCTS", connection).ExecuteReader();
                 while(dr.Read())
-                    model.Products.Add(new Product { IDProduct = Convert.ToInt32(dr.GetDecimal(0)), ProductName = dr.GetString(1), ProductDescription = dr.GetString(2) });
+                    model.Products.Add(new Product { IDProduct = Convert.ToInt32(dr.GetDecimal(0)), ProductName = dr.GetString(1), ProductDescription = dr.GetString(2) , NetPrice = Convert.ToDouble(dr.GetDecimal(3)), GrossPrice = Convert.ToDouble(dr.GetDecimal(4)) });
                 connection.Close();
             }
             return model.Products;

@@ -12,5 +12,10 @@ namespace crud_application
         public string ProductName { get; set; }
 
         public string ProductDescription { get; set; }
+
+        public double NetPrice { get; set; }
+
+        public double GrossPrice { get; set; }
+
     }
 }
