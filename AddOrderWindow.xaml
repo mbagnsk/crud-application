@@ -46,14 +46,25 @@
         <!-- Row 3 -->
         <TextBlock x:Name="QuantityTextBlock" Text="Ilość: " Grid.Column="1" Grid.Row="3" Margin="5"/>
         <TextBox x:Name="QuantityTextBox" Grid.Column="2" Grid.Row="3" Margin="5"/>
-
+        
+        <!-- Row 4-->
+        <TextBlock x:Name="NetPriceTextBlock" Text="Cena netto: " Grid.Column="1" Grid.Row="4" Margin="5"/>
+        <TextBlock x:Name="NetPriceValueTextBlock" Text="{Binding Path=SelectedItem.NetPrice, ElementName=ProductsComboBox}" Grid.Column="2" Grid.Row="4" Margin="5"/>
+        
         <!-- Row 5 -->
-        <TextBlock x:Name="ProductDescriptionTextBlock" Text="Opis produktu: " Grid.Column="1" Grid.Row="5" Margin="5"/>
-        <TextBlock x:Name="ProductDescriptionTextBlock2" Text="{Binding Path=SelectedItem.ProductDescription, ElementName=ProductsComboBox}" Grid.Column="2" Grid.Row="5" Margin="5"/>
+        <TextBlock x:Name="GrossPriceTextBlock" Text="Cena brutto: " Grid.Column="1" Grid.Row="5" Margin="5"/>
+        <TextBlock x:Name="GrossPriceValueTextBlock" Text="{Binding Path=SelectedItem.GrossPrice, ElementName=ProductsComboBox}" Grid.Column="2" Grid.Row="5" Margin="5"/>
 
         <!-- Row 6 -->
-        <Button x:Name="AddOrderButton" Content ="Dodaj zamówienie" Grid.Column="1" Grid.Row="6" Margin="5,10,1,10" Click="AddOrderButton_Click"/>
+        <TextBlock x:Name="ProductDescriptionTextBlock" Text="Opis produktu: " Grid.Column="1" Grid.Row="6" Margin="5"/>
+        <TextBlock x:Name="ProductDescriptionValueTextBlock" Text="{Binding Path=SelectedItem.ProductDescription, ElementName=ProductsComboBox}" Grid.Column="2" Grid.Row="6" Margin="5"/>
+
+        <!-- Row 7 -->
+        <Button x:Name="AddToOrderButton" Content="Dodaj do zamówienia" Grid.Column="2" Grid.Row="7" Margin="5"/>
+        
+        <!-- Row 8 -->
+        <Button x:Name="AddOrderButton" Content ="Dodaj zamówienie" Grid.Column="1" Grid.Row="8" Margin="5,10,1,10" Click="AddOrderButton_Click"/>
         <Button x:Name="CancelButton" Command="ApplicationCommands.Close" Content="Anuluj"
-                Grid.Column="2" Grid.Row="6" Margin="5 10"/>
+                Grid.Column="2" Grid.Row="8" Margin="5 10"/>
     </Grid>
 </Window>
