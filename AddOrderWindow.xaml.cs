@@ -29,10 +29,22 @@ namespace crud_application
             ProductsComboBox.ItemsSource = Products;
         }
 
+        private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = (e.Row.GetIndex()+1).ToString();
+        }
 
         private void CloseCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void AddToOrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            Product product = ProductsComboBox.SelectedItem as Product;
+
+            ProductsDataGrid.Items.Add(product);
+            ProductsDataGrid.Items.Refresh();
         }
 
         private void AddOrderButton_Click(object sender, RoutedEventArgs e)
