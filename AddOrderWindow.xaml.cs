@@ -42,9 +42,11 @@ namespace crud_application
         private void AddToOrderButton_Click(object sender, RoutedEventArgs e)
         {
             Product product = ProductsComboBox.SelectedItem as Product;
-
-            ProductsDataGrid.Items.Add(product);
-            ProductsDataGrid.Items.Refresh();
+            InvoiceElement invoiceElement = new InvoiceElement(product.IDProduct, product.ProductName, product.ProductDescription, product.NetPrice, product.GrossPrice, Convert.ToInt32(QuantityTextBox.Text));
+            InvoiceElememtsDataGrid.Items.Add(invoiceElement);
+            ProductsComboBox.SelectedIndex = -1;
+            QuantityTextBox.Clear();
+            InvoiceElememtsDataGrid.Items.Refresh();
         }
 
         private void AddOrderButton_Click(object sender, RoutedEventArgs e)
