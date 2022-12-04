@@ -4,6 +4,6 @@ CREATE TABLE WarehouseManagerDB.dbo.INVOICES (
 	OrderDatetime DATETIME NOT NULL,
 	DueDate DATE NOT NULL,
 	PaymentDate DATE,
-	PaymentAmount NUMERIC(13,2) NOT NULL,
+	PaymentAmount NUMERIC(13,2),
 	OrderActive BIT NOT NULL
 );
