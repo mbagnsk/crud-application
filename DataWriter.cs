@@ -62,5 +62,23 @@ namespace crud_application
             }
             return true;
         }
+
+        public static int AddInvoice(int idclient)
+        {
+            using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("AddInvoice", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@IDClient", idclient));
+                command.Parameters.Add(new SqlParameter("@OrderDatetime", DateTime.UtcNow));
+                SqlParameter idinvoice = new SqlParameter("@IDInvoice", SqlDbType.Int);
+                idinvoice.Direction = ParameterDirection.ReturnValue;
+                command.Parameters.Add(idinvoice);
+                command.ExecuteNonQuery();
+                var idinvoiceResult = command.Parameters["@IDInvoice"].Value;
+                return Convert.ToInt32(idinvoiceResult);
+            }
+        }
     }
 }

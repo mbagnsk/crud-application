@@ -21,7 +21,6 @@ namespace crud_application
     {
         public AddOrderWindow()
         {
-            
             InitializeComponent();
             IList<Client> Companies = DataAccess.GetClients();
             IList<Product> Products = DataAccess.GetProducts();
@@ -51,7 +50,7 @@ namespace crud_application
 
         private void AddOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            int selected = (int)CompaniesComboBox.SelectedValue;
+            int idinvoice = DataWriter.AddInvoice(2);
         }
     }
 }
