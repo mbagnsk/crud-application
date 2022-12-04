@@ -41,16 +41,17 @@ namespace crud_application
         private void AddToOrderButton_Click(object sender, RoutedEventArgs e)
         {
             Product product = ProductsComboBox.SelectedItem as Product;
-            InvoiceElement invoiceElement = new InvoiceElement(product.IDProduct, product.ProductName, product.ProductDescription, product.NetPrice, product.GrossPrice, Convert.ToInt32(QuantityTextBox.Text));
-            InvoiceElememtsDataGrid.Items.Add(invoiceElement);
+            OrderElement invoiceElement = new OrderElement(product.IDProduct, product.ProductName, product.ProductDescription, product.NetPrice, product.GrossPrice, Convert.ToInt32(QuantityTextBox.Text));
+            OrderElementDataGrid.Items.Add(invoiceElement);
             ProductsComboBox.SelectedIndex = -1;
             QuantityTextBox.Clear();
-            InvoiceElememtsDataGrid.Items.Refresh();
+            OrderElementDataGrid.Items.Refresh();
         }
 
         private void AddOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            int idinvoice = DataWriter.AddInvoice(2);
+            Client client = CompaniesComboBox.SelectedItem as Client;
+            int idinvoice = DataWriter.AddInvoice(client.IDClient);
         }
     }
 }

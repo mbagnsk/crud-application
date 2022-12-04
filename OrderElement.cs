@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace crud_application
 {
-    public class InvoiceElement : Product
+    public class OrderElement : Product
     {
         public int Quantity { get; set; }
-        public InvoiceElement(int idProduct, string productName, string productDescription, double netPrice, double grossPrice, int quantity)
+        public OrderElement(int idProduct, string productName, string productDescription, double netPrice, double grossPrice, int quantity)
         {
             IDProduct = idProduct;
             ProductName = productName;
