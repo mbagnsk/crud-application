@@ -10,38 +10,6 @@ namespace crud_application
 {
     public static class DataWriter
     {
-        public static bool AddOrder(int idOrder, int idClient, int idEmployee)
-        {
-            using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
-            {
-                using (SqlCommand command = new SqlCommand())
-                {
-                    string query = "insert into dbo.Customers (idzamowienia, idklienta, idwprowadzajcego) values (@idzamowienia, @idklienta, @idwprowadzajcego)";
-                    command.Connection = connection;
-                    command.CommandType = CommandType.Text;
-                    command.CommandText = query;
-                    command.Parameters.AddWithValue("@idzamowienia", idOrder);
-                    command.Parameters.AddWithValue("@idklienta", idClient);
-                    command.Parameters.AddWithValue("@idwprowadzajcego", idEmployee);
-                    
-                    try
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                    }
-                    catch (Exception)
-                    {
-                        return false;
-                    }
-                    finally
-                    {
-                        connection.Close();      
-                    }
-                }
-                return true;
-            }
-        }
-
         public static bool AddClient(string company, int nip, string street, int building, int local, string city, string zipCode, string email, int phoneNumber)
         {
             using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
@@ -78,6 +46,20 @@ namespace crud_application
                 command.ExecuteNonQuery();
                 var idinvoiceResult = command.Parameters["@IDInvoice"].Value;
                 return Convert.ToInt32(idinvoiceResult);
+            }
+        }
+
+        public static void AddOrder(int idinvoice, int idproduct, int quantity)
+        {
+            using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("AddOrder", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@IDInvoice", idinvoice));
+                command.Parameters.Add(new SqlParameter("@IDProduct", idproduct));
+                command.Parameters.Add(new SqlParameter("@Quantity", quantity));
+                command.ExecuteNonQuery();
             }
         }
     }
