@@ -17,6 +17,9 @@ namespace crud_application
             NetPrice = netPrice;
             GrossPrice = grossPrice;
             Quantity = quantity;
+            orderElements.Add(this);
         }
+
+        static public List<OrderElement> orderElements = new List<OrderElement>();
     }
 }
