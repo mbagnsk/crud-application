@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace crud_application
 {
@@ -31,35 +32,56 @@ namespace crud_application
             return true;
         }
 
-        public static int AddInvoice(int idclient)
+        private static int AddInvoice(int idclient, SqlCommand addInvoiceSqlCommand)
         {
-            using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand("AddInvoice", connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@IDClient", idclient));
-                command.Parameters.Add(new SqlParameter("@OrderDatetime", DateTime.UtcNow));
-                SqlParameter idinvoice = new SqlParameter("@IDInvoice", SqlDbType.Int);
-                idinvoice.Direction = ParameterDirection.ReturnValue;
-                command.Parameters.Add(idinvoice);
-                command.ExecuteNonQuery();
-                var idinvoiceResult = command.Parameters["@IDInvoice"].Value;
-                return Convert.ToInt32(idinvoiceResult);
-            }
+            addInvoiceSqlCommand.CommandType = CommandType.StoredProcedure;
+            addInvoiceSqlCommand.Parameters.Add(new SqlParameter("@IDClient", idclient));
+            addInvoiceSqlCommand.Parameters.Add(new SqlParameter("@OrderDatetime", DateTime.UtcNow));
+            SqlParameter idinvoice = new SqlParameter("@IDInvoice", SqlDbType.Int);
+            idinvoice.Direction = ParameterDirection.ReturnValue;
+            addInvoiceSqlCommand.Parameters.Add(idinvoice);
+            addInvoiceSqlCommand.ExecuteNonQuery();
+            var idinvoiceResult = addInvoiceSqlCommand.Parameters["@IDInvoice"].Value;
+            return Convert.ToInt32(idinvoiceResult);
         }
 
-        public static void AddOrder(int idinvoice, int idproduct, int quantity)
+        private static void AddOrderElement(int idinvoice, int idproduct, int quantity, SqlCommand addOrderElementSqlCommand)
         {
+            addOrderElementSqlCommand.CommandType = CommandType.StoredProcedure;
+            addOrderElementSqlCommand.Parameters.Add(new SqlParameter("@IDInvoice", idinvoice));
+            addOrderElementSqlCommand.Parameters.Add(new SqlParameter("@IDProduct", idproduct));
+            addOrderElementSqlCommand.Parameters.Add(new SqlParameter("@Quantity", quantity));
+            addOrderElementSqlCommand.ExecuteNonQuery();
+        }
+
+        public static bool AddOrder(int idclient)
+        {
+            bool result = false;
             using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
-            {
+            {   
                 connection.Open();
-                SqlCommand command = new SqlCommand("AddOrder", connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@IDInvoice", idinvoice));
-                command.Parameters.Add(new SqlParameter("@IDProduct", idproduct));
-                command.Parameters.Add(new SqlParameter("@Quantity", quantity));
-                command.ExecuteNonQuery();
+                SqlTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    SqlCommand addInvoiceSqlCommand = new SqlCommand("AddInvoice", connection, transaction);
+                    int idinvoice = AddInvoice(idclient, addInvoiceSqlCommand);
+                    foreach (OrderElement orderElement in OrderElement.orderElements)
+                    {
+                        SqlCommand addOrderElementSqlCommand = new SqlCommand("AddOrder", connection, transaction);
+                        DataWriter.AddOrderElement(idinvoice, orderElement.IDProduct, orderElement.Quantity, addOrderElementSqlCommand);
+                    }
+                    transaction.Commit();
+                    result = true;
+                }
+                catch(Exception)
+                {
+                    transaction.Rollback();
+                }
+                finally
+                {
+                    connection.Close();
+                }
+                return result;
             }
         }
     }

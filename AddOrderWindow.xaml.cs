@@ -44,25 +44,15 @@ namespace crud_application
             Product product = ProductsComboBox.SelectedItem as Product;
             OrderElement invoiceElement = new OrderElement(product.IDProduct, product.ProductName, product.ProductDescription, product.NetPrice, product.GrossPrice, Convert.ToInt32(QuantityTextBox.Text));
             OrderElementDataGrid.ItemsSource = OrderElement.orderElements;
-            /*HideColumns();*/
             ProductsComboBox.SelectedIndex = -1;
             QuantityTextBox.Clear();
             OrderElementDataGrid.Items.Refresh();
         }
 
-        private void HideColumns()
-        {
-            OrderElementDataGrid.Columns[0].Visibility = Visibility.Collapsed;
-        }
-
         private void AddOrderButton_Click(object sender, RoutedEventArgs e)
         {
             Client client = CompaniesComboBox.SelectedItem as Client;
-            int idinvoice = DataWriter.AddInvoice(client.IDClient);
-            foreach (OrderElement orderElement in OrderElement.orderElements)
-            {
-                DataWriter.AddOrder(idinvoice, orderElement.IDProduct, orderElement.Quantity);
-            }
+            DataWriter.AddOrder(client.IDClient);
         }
     }
 }
