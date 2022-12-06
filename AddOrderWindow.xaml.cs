@@ -42,7 +42,7 @@ namespace crud_application
         private void AddToOrderButton_Click(object sender, RoutedEventArgs e)
         {
             Product product = ProductsComboBox.SelectedItem as Product;
-            OrderElement invoiceElement = new OrderElement(product.IDProduct, product.ProductName, product.ProductDescription, product.NetPrice, product.GrossPrice, Convert.ToInt32(QuantityTextBox.Text));
+            OrderElement orderElement = new OrderElement(product.IDProduct, product.ProductName, product.ProductDescription, product.NetPrice, product.GrossPrice, Convert.ToInt32(QuantityTextBox.Text));
             OrderElementDataGrid.ItemsSource = OrderElement.orderElements;
             ProductsComboBox.SelectedIndex = -1;
             QuantityTextBox.Clear();
