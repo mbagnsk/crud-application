@@ -52,7 +52,12 @@ namespace crud_application
         private void AddOrderButton_Click(object sender, RoutedEventArgs e)
         {
             Client client = CompaniesComboBox.SelectedItem as Client;
-            DataWriter.AddOrder(client.IDClient);
+            if (DataWriter.AddOrder(client.IDClient))
+            {
+                this.Close();
+                MessageBox.Show("Dodano zamówienie.");
+            }
+            else MessageBox.Show("Błąd podczas dodawania zamówienia!");
         }
     }
 }
