@@ -38,5 +38,38 @@ namespace crud_application
             }
             return model.Products;
         }
+
+        public static void GetInvoices()
+        {
+            List<Invoice> invoices = new List<Invoice>();
+            using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
+            {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand("GetInvoices", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    Invoice invoice = null;
+                while (dataReader.Read())
+                {
+
+                    invoice = new Invoice
+                    (
+                        idInvoice = Convert.ToInt32(dataReader.GetDecimal(0)),
+                        idClient = Convert.ToInt32(dataReader.GetDecimal(1)),
+                        orderDatetime = Convert.ToDateTime(dataReader.GetDateTime(2)),
+                        dueDate = dataReader.IsDBNull(Convert.ToInt32(dataReader.GetDateTime(3))) ? null : DateOnly.FromDateTime(Convert.ToDateTime(dataReader.GetDateTime(3))),
+                        paymentDate = dataReader.IsDBNull(Convert.ToInt32(dataReader.GetDateTime(3))) ? null : DateOnly.FromDateTime(Convert.ToDateTime(dataReader.GetDateTime(4))),
+                        paymentAmount = Convert.ToInt32(dataReader.GetDecimal(5)),
+                        orderActive = Convert.ToBoolean(dataReader.GetBoolean(6)));
+                }
+            }
+        }
     }
 }
+/*invoice = new Invoice(Convert.ToInt32(dataReader.GetDecimal(0)), 
+                            Convert.ToInt32(dataReader.GetDecimal(1)), 
+                            Convert.ToDateTime(dataReader.GetDateTime(2)), 
+                            DateOnly.FromDateTime(Convert.ToDateTime(dataReader.GetDateTime(3))), 
+                            DateOnly.FromDateTime(Convert.ToDateTime(dataReader.GetDateTime(4))),
+                            Convert.ToDouble(dataReader.GetDecimal(5)),
+                            Convert.ToBoolean(dataReader.GetBoolean(6)));*/

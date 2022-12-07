@@ -21,6 +21,7 @@ namespace crud_application
         public MainWindow()
         {
             InitializeComponent();
+            DataAccess.GetInvoices();
         }
         private void AddOrderButton_Click(object sender, RoutedEventArgs e)
         {
