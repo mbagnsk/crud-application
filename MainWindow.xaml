@@ -12,8 +12,6 @@
             <ColumnDefinition Width="20" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
@@ -21,16 +19,19 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-
+        
+        <!-- Row 1 -->
         <Button x:Name="AddOrderButton" Content="Dodaj zamówienie" Grid.Column="1" Grid.Row="1"
              Click="AddOrderButton_Click" Margin="5"/>
+        
+        <!-- Row 2-->
         <Button x:Name="AddCustomerButton" Content="Dodaj klienta" Grid.Column="1" Grid.Row="2"
             Click="AddCustomerButton_Click" Margin="5"/>
+        
+        <!-- Row 3 -->
+        <DataGrid x:Name="InvoicesDataGrid" Grid.Column="3" Grid.Row="3" Margin="5"/>
     </Grid>
 </Window>

@@ -21,6 +21,8 @@ namespace crud_application
         public MainWindow()
         {
             InitializeComponent();
+            var invoices = DataAccess.GetInvoices();
+            InvoicesDataGrid.ItemsSource= invoices;
         }
         private void AddOrderButton_Click(object sender, RoutedEventArgs e)
         {
