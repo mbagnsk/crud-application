@@ -32,6 +32,15 @@
             Click="AddCustomerButton_Click" Margin="5"/>
         
         <!-- Row 3 -->
-        <DataGrid x:Name="InvoicesDataGrid" Grid.Column="3" Grid.Row="3" Margin="5"/>
+        <DataGrid x:Name="InvoicesDataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Grid.Column="3" Grid.Row="3" Margin="5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Numer faktury" Binding="{Binding idInvoice}"/>
+                <DataGridTextColumn Header="Klient" Binding="{Binding Company}"/>
+                <DataGridTextColumn Header="Data zamówienia" Binding="{Binding orderDatetime}"/>
+                <DataGridTextColumn Header="Data wymagalności" Binding="{Binding dueDate}"/>
+                <DataGridTextColumn Header="Zamówienie opłacone" Binding="{Binding isPaymentDone}"/>
+                <DataGridTextColumn Header="Zamówienie aktywne" Binding="{Binding orderActive}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
