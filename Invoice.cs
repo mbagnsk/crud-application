@@ -15,7 +15,7 @@ namespace crud_application
         public DateOnly? dueDate { get; set; }
         public DateOnly? paymentDate { get; set; }
         public double paymentAmount { get; set; }
-        public bool orderActive { get; set; }
+        public bool isOrderActive { get; set; }
 
         public Invoice(int idinvoice, int idclient, string companyname, DateTime orderdatetime, DateOnly duedate, DateOnly paymentdate, double paymentamount, bool orderactive)
         {
@@ -26,7 +26,7 @@ namespace crud_application
             dueDate = duedate;
             paymentDate = paymentdate;
             paymentAmount = paymentamount;
-            orderActive = orderactive;
+            isOrderActive = orderactive;
         }
     }
 }

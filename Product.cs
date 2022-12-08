@@ -17,5 +17,6 @@ namespace crud_application
 
         public double GrossPrice { get; set; }
 
+        public Product() { }
     }
 }
