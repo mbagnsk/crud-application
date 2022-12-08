@@ -1,18 +1,20 @@
 ﻿USE [WarehouseManagerDB]
-USE [WarehouseManagerDB]
 GO
-/****** Object:  StoredProcedure [dbo].[GetInvoices]    Script Date: 07.12.2022 21:59:46 ******/
+/****** Object:  StoredProcedure [dbo].[GetInvoices]    Script Date: 08.12.2022 19:54:57 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER PROCEDURE [dbo].[GetInvoices]
+CREATE PROCEDURE [dbo].[GetInvoices]
 AS
 SELECT
-	  [IDInvoice],
-      [IDClient],
-      [OrderDatetime],
-      [DueDate],
-      ISNULL([PaymentDate], '1900-01-01') AS 'PaymentDate',
-      ISNULL([PaymentAmount], 0) AS 'PaymentAmount',
-      [OrderActive] FROM [dbo].[INVOICES]
+	  a.[IDInvoice],
+      a.[IDClient],
+	  b.[Company],
+      a.[OrderDatetime],
+      a.[DueDate],
+      ISNULL(a.[PaymentDate], '1900-01-01') AS 'PaymentDate',
+      ISNULL(a.[PaymentAmount], 0) AS 'PaymentAmount',
+      a.[OrderActive] FROM [dbo].[INVOICES] a
+	  LEFT JOIN [dbo].[CUSTOMERS] b
+	  ON a.IDClient = b.IDClient;

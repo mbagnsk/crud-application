@@ -54,11 +54,12 @@ namespace crud_application
                     Invoice invoice = new Invoice(
                         Convert.ToInt32(dataReader.GetDecimal(0)),
                         Convert.ToInt32(dataReader.GetDecimal(1)),
-                        Convert.ToDateTime(dataReader.GetDateTime(2)),
-                        DateOnly.FromDateTime(Convert.ToDateTime(dataReader.GetDateTime(3))),
+                        Convert.ToString(dataReader.GetString(2)),
+                        Convert.ToDateTime(dataReader.GetDateTime(3)),
                         DateOnly.FromDateTime(Convert.ToDateTime(dataReader.GetDateTime(4))),
-                        Convert.ToInt32(dataReader.GetDecimal(5)),
-                        Convert.ToBoolean(dataReader.GetBoolean(6))
+                        DateOnly.FromDateTime(Convert.ToDateTime(dataReader.GetDateTime(5))),
+                        Convert.ToInt32(dataReader.GetDecimal(6)),
+                        Convert.ToBoolean(dataReader.GetBoolean(7))
                     );
                     invoices.Add(invoice);
                 }
