@@ -13,16 +13,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Linq;
 
 namespace crud_application
 {
     public partial class MainWindow : Window
     {
+        List<Invoice> allInvoices;
         public MainWindow()
         {
             InitializeComponent();
-            var invoices = DataAccess.GetInvoices();
-            InvoicesDataGrid.ItemsSource = invoices;
+            allInvoices= DataAccess.GetInvoices();
+            InvoicesDataGrid.ItemsSource = allInvoices;
         }
         private void AddOrderButton_Click(object sender, RoutedEventArgs e)
         {
@@ -33,6 +35,13 @@ namespace crud_application
         {
             AddClientWindow addClientWindow = new AddClientWindow();
             addClientWindow.Show();
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            string clientSearch = ClientSearchTextBox.Text;
+            int invoiceSearch = Convert.ToInt32(InvoiceSearchTextBox.Text);
+            List<Invoice> searchResult = allInvoices.Where(a => a.companyName == clientSearch).ToList();
         }
     }
 }
