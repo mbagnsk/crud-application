@@ -95,7 +95,12 @@ namespace crud_application
 
         private void InvoicesDataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Click, click!");
+            Invoice invoice = InvoicesDataGrid.SelectedItem as Invoice;
+            if (invoice != null)
+            {
+                InvoiceDetailsWindow invoiceDetailsWindow = new InvoiceDetailsWindow(invoice);
+                invoiceDetailsWindow.Show();
+            }
         }
     }
 }
