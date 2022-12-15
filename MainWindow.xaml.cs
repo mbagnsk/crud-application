@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Linq;
 
 namespace crud_application
 {
@@ -39,9 +38,46 @@ namespace crud_application
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            string clientSearch = ClientSearchTextBox.Text;
-            int invoiceSearch = Convert.ToInt32(InvoiceSearchTextBox.Text);
-            List<Invoice> searchResult = allInvoices.Where(a => a.companyName == clientSearch).ToList();
+            string clientSearch = GetClientFromClientSearchTextBox();
+            int invoiceSearch = GetInvoiceFromSearchTextBox();
+            List<Invoice> searchResult = new List<Invoice>();
+            if (clientSearch != string.Empty && invoiceSearch != 0)
+                searchResult = allInvoices.Where(a => a.idInvoice == invoiceSearch && a.companyName == clientSearch).ToList();
+            else if (clientSearch != string.Empty)
+                searchResult = allInvoices.Where(a => a.companyName == clientSearch).ToList();
+            else if (invoiceSearch != 0)
+                searchResult = allInvoices.Where(a => a.idInvoice == invoiceSearch).ToList();
+            else
+                searchResult = allInvoices;
+            InvoicesDataGrid.ItemsSource = searchResult;
+        }
+
+        private string GetClientFromClientSearchTextBox()
+        {
+            string clientSearch;
+            try
+            {
+                clientSearch = ClientSearchTextBox.Text;
+            }
+            catch
+            {
+                clientSearch = string.Empty;
+            }
+            return clientSearch;
+        }
+
+        private int GetInvoiceFromSearchTextBox()
+        {
+            int invoiceSearch;
+            try
+            {
+                invoiceSearch = Convert.ToInt32(InvoiceSearchTextBox.Text);
+            }
+            catch
+            {
+                invoiceSearch = 0;
+            }
+            return invoiceSearch; 
         }
     }
 }
