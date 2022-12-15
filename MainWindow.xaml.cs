@@ -92,5 +92,10 @@ namespace crud_application
             allInvoices = DataAccess.GetInvoices();
             InvoicesDataGrid.ItemsSource = allInvoices;
         }
+
+        private void InvoicesDataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Click, click!");
+        }
     }
 }

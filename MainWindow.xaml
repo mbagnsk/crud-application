@@ -45,7 +45,7 @@
         <!-- Row 3 -->
         <Button x:Name="AddOrderButton" Content="Dodaj zamówienie" Grid.Column="1" Grid.Row="3"
              Click="AddOrderButton_Click" Margin="5" Width="120"/>
-        <DataGrid x:Name="InvoicesDataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="6" Grid.RowSpan="3" Margin="5">
+        <DataGrid x:Name="InvoicesDataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="6" Grid.RowSpan="3" Margin="5">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Numer faktury" Binding="{Binding idInvoice}"/>
                 <DataGridTextColumn Header="Klient" Binding="{Binding companyName}"/>
@@ -54,6 +54,11 @@
                 <DataGridTextColumn Header="Zamówienie opłacone" Binding="{Binding isPaymentDone}"/>
                 <DataGridTextColumn Header="Zamówienie aktywne" Binding="{Binding isOrderActive}"/>
             </DataGrid.Columns>
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="InvoicesDataGridRow_MouseDoubleClick"/>
+                </Style>
+            </DataGrid.Resources>
         </DataGrid>
         
         <!-- Row 4-->
