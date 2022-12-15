@@ -5,8 +5,88 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:crud_application"
         mc:Ignorable="d"
-        Title="InvoiceDetailsWindow" Height="450" Width="800">
+        Title="Szczegóły zamówienia" Height="450" Width="500">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/> 
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
         
+        <!-- Row 1 -->
+        <TextBlock x:Name="InvoiceDataTextBlock" Grid.Column="1" Grid.Row="1" Margin="5">
+            <Bold>Szczegóły faktury</Bold>
+        </TextBlock>
+
+        <!-- Row 2 -->
+        <TextBlock Text="Numer faktury: " Grid.Column="1" Grid.Row="2" Margin="5"/>
+        <TextBlock x:Name="InvoiceTextBlock" Grid.Column="2" Grid.Row="2" Margin="5"/>
+
+        <!-- Row 3 -->
+        <TextBlock Text="Nazwa klienta: " Grid.Column="1" Grid.Row="3" Margin="5"/>
+        <TextBlock x:Name="ClientTextBlock" Grid.Column="1" Grid.Row="3" Margin="5"/>
+
+        <!-- Row 4 -->
+        <TextBlock Text="Zamówienie aktywne?" Grid.Column="1" Grid.Row="4" Margin="5"/>
+        <CheckBox x:Name="isOrderActiveCheckBox" IsChecked="False" IsHitTestVisible="False" Focusable="False" Grid.Column="2" Grid.Row="4" Margin="5"/>
+
+        <!-- Row 5 -->
+        <TextBlock Text="Wartość zamówienia netto: " Grid.Column="1" Grid.Row="5" Margin="5"/>
+        <TextBlock x:Name="NetPriceTextBlock" Grid.Column="1" Grid.Row="5" Margin="5"/>
+
+        <!-- Row 6 -->
+        <TextBlock Text="Wartość zamówienia brutto: " Grid.Column="1" Grid.Row="6" Margin="5"/>
+        <TextBlock x:Name="GrossPriceTextBlock" Grid.Column="1" Grid.Row="6" Margin="5"/>
+
+        <!-- Row 7 -->
+        <TextBlock Text="Data i czas zamówienia: " Grid.Column="1" Grid.Row="7" Margin="5"/>
+        <TextBlock x:Name="OderDatetimeTextBlock" Grid.Column="1" Grid.Row="7" Margin="5"/>
+
+        <!-- Row 8 -->
+        <TextBlock Text="Data wymagalności: " Grid.Column="1" Grid.Row="8" Margin="5"/>
+        <TextBlock x:Name="DueDateTextBlock" Grid.Column="1" Grid.Row="8" Margin="5"/>
+
+        <!-- Row 9 -->
+        <TextBlock Text="Zamówienie opłacone?" Grid.Column="1" Grid.Row="9" Margin="5"/>
+        <CheckBox x:Name="isPaymentDoneCheckBox" IsChecked="False" IsHitTestVisible="False" Focusable="False" Grid.Column="2" Grid.Row="9" Margin="5"/>
+
+        <!-- Row 10 -->
+        <TextBlock Text="Wpłacona kwota: " Grid.Column="1" Grid.Row="10" Margin="5"/>
+        <TextBlock x:Name="PaymentAmountTextBlock" Grid.Column="1" Grid.Row="10" Margin="5"/>
+        
+        <!-- Row 11 -->
+        <TextBlock Grid.Column="1" Grid.Row="11" Margin="5">
+            <Bold>Szczegóły zamówienia</Bold>
+        </TextBlock>
+        
+        <!-- Row 12 -->
+        <DataGrid x:Name="OrderDataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="2" Margin="5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Produkt" Binding="{Binding product}"/>
+                <DataGridTextColumn Header="Ilość" Binding="{Binding quantity}"/>
+                <DataGridTextColumn Header="Kwota netto" Binding="{Binding netPrice}"/>
+                <DataGridTextColumn Header="Kwota brutto" Binding="{Binding grossPrice}"/>
+                <DataGridTextColumn Header="Suma" Binding="{Binding sumPrice}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
     </Grid>
 </Window>
