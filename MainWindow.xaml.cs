@@ -79,5 +79,18 @@ namespace crud_application
             }
             return invoiceSearch; 
         }
+
+        private void ClearFiltersButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClientSearchTextBox.Text = String.Empty;
+            InvoiceSearchTextBox.Text = String.Empty;
+            InvoicesDataGrid.ItemsSource = allInvoices;
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            allInvoices = DataAccess.GetInvoices();
+            InvoicesDataGrid.ItemsSource = allInvoices;
+        }
     }
 }

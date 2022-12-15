@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:crud_application"
         mc:Ignorable="d"
-        Title="Warehouse Manager" Height="450" Width="893"
+        Title="Warehouse Manager" Height="450" Width="910"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
@@ -32,11 +34,13 @@
         <TextBlock x:Name="ClientSearchTextBlock" Text="Nazwa klienta: " Grid.Column="2" Grid.Row="1" Margin="5"/>
         <TextBox x:Name="ClientSearchTextBox" Grid.Column="3" Grid.Row="1" Margin="5" Width="200"/>
         <TextBlock x:Name="InvoiceSearchTextBlock" Text="Numer faktury: " Grid.Column="4" Grid.Row="1" Margin="5"/>
-        <TextBox x:Name="InvoiceSearchTextBox" Grid.Column="5" Grid.Row="1" Margin="5" Width="100"/>
+        <TextBox x:Name="InvoiceSearchTextBox" Grid.Column="5" Grid.Row="1" Margin="5" Width="120"/>
         <Button x:Name="SearchButton" Content="Wyszukaj" Grid.Column="6" Grid.Row="1" Margin="5" Width="120" Click="SearchButton_Click"/>
 
         <!-- Row 2 -->
         <Button Content="Row2" Grid.Column="1" Grid.Row="2" Margin="5"/>
+        <Button x:Name="ClearFiltersButton" Content="Wyczyść filtry" Grid.Column="5" Grid.Row="2" Margin="5" Width="120" Click="ClearFiltersButton_Click"/>
+        <Button x:Name="RefreshButton" Content="Odśwież" Grid.Column="6" Grid.Row="2" Margin="5" Width="120" Click="RefreshButton_Click"/>
 
         <!-- Row 3 -->
         <Button x:Name="AddOrderButton" Content="Dodaj zamówienie" Grid.Column="1" Grid.Row="3"
