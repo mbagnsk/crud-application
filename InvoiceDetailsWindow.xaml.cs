@@ -27,13 +27,22 @@ namespace crud_application
 
         private void FillWindow(Invoice invoice)
         {
+            double netPrice = DataAccess.GetInvoiceNetPrice(invoice.idInvoice);
+            double grossPrice = DataAccess.GetInvoiceGrossPrice(invoice.idInvoice);
+
             InvoiceTextBlock.Text = invoice.idInvoice.ToString();
             ClientTextBlock.Text = invoice.companyName;
             IsOrderActiveCheckBox.IsChecked = invoice.isOrderActive;
             OrderDatetimeTextBlock.Text = invoice.orderDatetime.ToString();
             DueDateTextBlock.Text = invoice.dueDate.ToString();
             PaymentAmountTextBlock.Text = invoice.paymentAmount.ToString();
-            NetPriceTextBlock.Text = DataAccess.GetInvoiceNetPrice(invoice.idInvoice).ToString();
+            NetPriceTextBlock.Text = netPrice.ToString("F"); ;
+            GrossPriceTextBlock.Text = grossPrice.ToString("F");
+
+            if (invoice.paymentAmount >= grossPrice)
+                IsPaymentDoneCheckBox.IsChecked = true;
+            else
+                IsPaymentDoneCheckBox.IsChecked = false;
         }
     }
 }

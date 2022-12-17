@@ -82,5 +82,20 @@ namespace crud_application
             }
             return netPrice;
         }
+        public static double GetInvoiceGrossPrice(int idInvoice)
+        {
+            double grossPrice = 0;
+            using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("GetInvoiceGrossPrice", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@IDInvoice", idInvoice));
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                    grossPrice = Convert.ToDouble(dataReader.GetDecimal(0));
+            }
+            return grossPrice;
+        }
     }
 }
