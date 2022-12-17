@@ -47,5 +47,10 @@ namespace crud_application
             else
                 IsPaymentDoneCheckBox.IsChecked = false;
         }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:crud_application"
         mc:Ignorable="d"
-        Title="Szczegóły zamówienia" Height="600" Width="500">
+        Title="Szczegóły zamówienia" Height="600" Width="500"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -27,6 +28,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         
@@ -85,5 +87,8 @@
                 <DataGridTextColumn Header="Kwota brutto" Binding="{Binding GrossPrice}"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <!-- Row 13 -->
+        <Button x:Name="ExitButton" Content="Wyjście" Grid.Column="2" Grid.Row="13" HorizontalAlignment="Right"  Width="120" Margin="5" Click="ExitButton_Click"/>
     </Grid>
 </Window>
