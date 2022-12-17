@@ -33,6 +33,7 @@ namespace crud_application
             OrderDatetimeTextBlock.Text = invoice.orderDatetime.ToString();
             DueDateTextBlock.Text = invoice.dueDate.ToString();
             PaymentAmountTextBlock.Text = invoice.paymentAmount.ToString();
+            NetPriceTextBlock.Text = DataAccess.GetInvoiceNetPrice(invoice.idInvoice).ToString();
         }
     }
 }

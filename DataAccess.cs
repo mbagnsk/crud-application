@@ -66,5 +66,21 @@ namespace crud_application
             }
             return invoices;
         }
+
+        public static double GetInvoiceNetPrice(int idInvoice)
+        {
+            double netPrice = 0;
+            using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("GetInvoiceNetPrice", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@IDInvoice", idInvoice));
+                SqlDataReader dataReader = command.ExecuteReader();
+                while(dataReader.Read())
+                    netPrice = Convert.ToDouble(dataReader.GetDecimal(0));
+            }
+            return netPrice;
+        }
     }
 }
