@@ -29,6 +29,8 @@ namespace crud_application
         {
             double netPrice = DataAccess.GetInvoiceNetPrice(invoice.idInvoice);
             double grossPrice = DataAccess.GetInvoiceGrossPrice(invoice.idInvoice);
+            List<OrderElement> orderElements = new List<OrderElement>();
+            orderElements = DataAccess.GetOrderElements(invoice.idInvoice);
 
             InvoiceTextBlock.Text = invoice.idInvoice.ToString();
             ClientTextBlock.Text = invoice.companyName;
@@ -38,6 +40,7 @@ namespace crud_application
             PaymentAmountTextBlock.Text = invoice.paymentAmount.ToString();
             NetPriceTextBlock.Text = netPrice.ToString("F"); ;
             GrossPriceTextBlock.Text = grossPrice.ToString("F");
+            OrderElementsDataGrid.ItemsSource = orderElements;
 
             if (invoice.paymentAmount >= grossPrice)
                 IsPaymentDoneCheckBox.IsChecked = true;

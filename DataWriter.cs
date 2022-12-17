@@ -54,7 +54,7 @@ namespace crud_application
             addOrderElementSqlCommand.ExecuteNonQuery();
         }
 
-        public static bool AddOrder(int idclient)
+        public static bool AddOrder(int idclient, List<OrderElement> orderElements)
         {
             bool result = false;
             using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
@@ -65,7 +65,7 @@ namespace crud_application
                 {
                     SqlCommand addInvoiceSqlCommand = new SqlCommand("AddInvoice", connection, transaction);
                     int idinvoice = AddInvoice(idclient, addInvoiceSqlCommand);
-                    foreach (OrderElement orderElement in OrderElement.orderElements)
+                    foreach (OrderElement orderElement in orderElements)
                     {
                         SqlCommand addOrderElementSqlCommand = new SqlCommand("AddOrder", connection, transaction);
                         DataWriter.AddOrderElement(idinvoice, orderElement.IDProduct, orderElement.Quantity, addOrderElementSqlCommand);

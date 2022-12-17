@@ -16,7 +16,14 @@ namespace crud_application
         public double NetPrice { get; set; }
 
         public double GrossPrice { get; set; }
-
         public Product() { }
+        public Product(int id, string productname, string productdescription, double netprice, double grossprice)
+        {
+            IDProduct = id;
+            ProductName = productname;
+            ProductDescription = productdescription;
+            NetPrice = netprice;
+            GrossPrice = grossprice;
+        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:crud_application"
         mc:Ignorable="d"
-        Title="Szczegóły zamówienia" Height="450" Width="500">
+        Title="Szczegóły zamówienia" Height="600" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -77,16 +77,13 @@
         </TextBlock>
         
         <!-- Row 12 -->
-        <DataGrid x:Name="OrderDataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="2" Margin="5">
+        <DataGrid x:Name="OrderElementsDataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="2" Margin="5">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Produkt" Binding="{Binding product}"/>
-                <DataGridTextColumn Header="Ilość" Binding="{Binding quantity}"/>
-                <DataGridTextColumn Header="Kwota netto" Binding="{Binding netPrice}"/>
-                <DataGridTextColumn Header="Kwota brutto" Binding="{Binding grossPrice}"/>
-                <DataGridTextColumn Header="Suma" Binding="{Binding sumPrice}"/>
+                <DataGridTextColumn Header="Produkt" Binding="{Binding ProductName}"/>
+                <DataGridTextColumn Header="Ilość" Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Header="Kwota netto" Binding="{Binding NetPrice}"/>
+                <DataGridTextColumn Header="Kwota brutto" Binding="{Binding GrossPrice}"/>
             </DataGrid.Columns>
         </DataGrid>
-
-
     </Grid>
 </Window>

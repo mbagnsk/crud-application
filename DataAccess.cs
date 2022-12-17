@@ -97,5 +97,29 @@ namespace crud_application
             }
             return grossPrice;
         }
+
+        public static List<OrderElement> GetOrderElements(int idInvoice)
+        {
+            List<OrderElement> orderElements = new List<OrderElement> ();
+            using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("GetOrderElements", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@IDInvoice", idInvoice));
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    orderElements.Add(new OrderElement(
+                        Convert.ToInt32(dataReader.GetDecimal(0)),
+                        Convert.ToString(dataReader.GetString(1)),
+                        Convert.ToString(dataReader.GetString(2)),
+                        Convert.ToDouble(dataReader.GetDecimal(3)),
+                        Convert.ToDouble(dataReader.GetDecimal(4)),
+                        Convert.ToInt32(dataReader.GetDecimal(5))));
+                }
+            }
+            return orderElements;
+        }
     }
 }

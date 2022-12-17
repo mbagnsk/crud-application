@@ -19,7 +19,7 @@ namespace crud_application
     /// </summary>
     public partial class AddOrderWindow : Window
     {
-        List<OrderElement> orderElement = new List<OrderElement>();
+        List<OrderElement> orderElements = new List<OrderElement>();
         public AddOrderWindow()
         {
             InitializeComponent();
@@ -43,7 +43,8 @@ namespace crud_application
         {
             Product product = ProductsComboBox.SelectedItem as Product;
             OrderElement orderElement = new OrderElement(product.IDProduct, product.ProductName, product.ProductDescription, product.NetPrice, product.GrossPrice, Convert.ToInt32(QuantityTextBox.Text));
-            OrderElementDataGrid.ItemsSource = OrderElement.orderElements;
+            orderElements.Add(orderElement);
+            OrderElementDataGrid.ItemsSource = orderElements;
             ProductsComboBox.SelectedIndex = -1;
             QuantityTextBox.Clear();
             OrderElementDataGrid.Items.Refresh();
@@ -52,7 +53,7 @@ namespace crud_application
         private void AddOrderButton_Click(object sender, RoutedEventArgs e)
         {
             Client client = CompaniesComboBox.SelectedItem as Client;
-            if (DataWriter.AddOrder(client.IDClient))
+            if (DataWriter.AddOrder(client.IDClient, orderElements))
             {
                 this.Close();
                 MessageBox.Show("Dodano zamówienie.");
