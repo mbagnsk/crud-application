@@ -22,6 +22,17 @@ namespace crud_application
         public InvoiceDetailsWindow(Invoice invoice)
         {
             InitializeComponent();
+            FillWindow(invoice);
+        }
+
+        private void FillWindow(Invoice invoice)
+        {
+            InvoiceTextBlock.Text = invoice.idInvoice.ToString();
+            ClientTextBlock.Text = invoice.companyName;
+            IsOrderActiveCheckBox.IsChecked = invoice.isOrderActive;
+            OrderDatetimeTextBlock.Text = invoice.orderDatetime.ToString();
+            DueDateTextBlock.Text = invoice.dueDate.ToString();
+            PaymentAmountTextBlock.Text = invoice.paymentAmount.ToString();
         }
     }
 }
