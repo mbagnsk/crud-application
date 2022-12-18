@@ -24,6 +24,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="20"/>
@@ -43,7 +44,7 @@
         <!-- Row 3 -->
         <Button x:Name="AddOrderButton" Content="Dodaj zamówienie" Grid.Column="1" Grid.Row="3"
              Click="AddOrderButton_Click" Margin="5" Width="120"/>
-        <DataGrid x:Name="InvoicesDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="3" Grid.RowSpan="4" Margin="5">
+        <DataGrid x:Name="InvoicesDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="3" Grid.RowSpan="5" Margin="5">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Numer faktury" Binding="{Binding idInvoice}" Width="auto"/>
                 <DataGridTextColumn Header="Klient" Binding="{Binding companyName}" Width="165"/>
@@ -61,8 +62,11 @@
         <!-- Row 4 -->
         <Button x:Name="AddCustomerButton" Content="Dodaj klienta" Grid.Column="1" Grid.Row="4"
             Click="AddCustomerButton_Click" Margin="5" Width="120"/>
+        
+        <!-- Row 5 -->
+        <Button x:Name="AddProductButton" Content="Dodaj produkt" Grid.Column="1" Grid.Row="5" Margin="5" Width="120" Click="AddProductButton_Click"/>
 
-        <!-- Row 6 -->
-        <Button x:Name="ExitButton" Content="Wyjście" Grid.Column="1" Grid.Row="6" Width="120" Margin="5" Click="ExitButton_Click"/>
+        <!-- Row 7 -->
+        <Button x:Name="ExitButton" Content="Wyjście" Grid.Column="1" Grid.Row="7" Width="120" Margin="5" Click="ExitButton_Click"/>
     </Grid>
 </Window>

@@ -107,5 +107,13 @@ namespace crud_application
         {
             this.Close();
         }
+
+        private void AddProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataWriter.AddProduct("detal5", "Opis detalu 5", 321, 333, DateTime.UtcNow, DateTime.UtcNow)) 
+                MessageBox.Show("Dodano produkt!");
+            else
+                MessageBox.Show("Błąd podczas dodawania produktu!");
+        }
     }
 }

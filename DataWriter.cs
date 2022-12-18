@@ -73,16 +73,37 @@ namespace crud_application
                     transaction.Commit();
                     result = true;
                 }
-                catch(Exception)
-                {
-                    transaction.Rollback();
-                }
-                finally
-                {
-                    connection.Close();
-                }
-                return result;
+                catch(Exception) { transaction.Rollback(); }
+                finally { connection.Close(); }
             }
+            return result;
+        }
+
+        public static bool AddProduct(string productName, string productDescription, double netPrice, double grossPrice, DateTime priceActiveFrom, DateTime priceActiveTo)
+        {
+            bool result = false;
+            using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    SqlCommand addProductSqlCommand = new SqlCommand("AddProduct", connection, transaction);
+                    addProductSqlCommand.CommandType = CommandType.StoredProcedure;
+                    addProductSqlCommand.Parameters.Add(new SqlParameter("@ProductName", productName));
+                    addProductSqlCommand.Parameters.Add(new SqlParameter("@ProductDescription", productDescription));
+                    addProductSqlCommand.Parameters.Add(new SqlParameter("@NetPrice", netPrice));
+                    addProductSqlCommand.Parameters.Add(new SqlParameter("@GrossPrice", grossPrice));
+                    addProductSqlCommand.Parameters.Add(new SqlParameter("@PriceActiveFrom", priceActiveFrom));
+                    addProductSqlCommand.Parameters.Add(new SqlParameter("@PriceActiveTo", priceActiveTo));
+                    addProductSqlCommand.ExecuteNonQuery();
+                    transaction.Commit();
+                    result = true;
+                }
+                catch (Exception) { transaction.Rollback(); }
+                finally { connection.Close(); }
+            }
+            return result;
         }
     }
 }

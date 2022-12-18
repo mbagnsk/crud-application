@@ -10,12 +10,11 @@ namespace crud_application
     {
         public int IDProduct { get; set; }
         public string ProductName { get; set; }
-
         public string ProductDescription { get; set; }
-
         public double NetPrice { get; set; }
-
         public double GrossPrice { get; set; }
+        public DateTime priceActiveFrom { get; set; }
+        public DateTime priceActiveTo { get; set; }
         public Product() { }
         public Product(int id, string productname, string productdescription, double netprice, double grossprice)
         {
@@ -24,6 +23,16 @@ namespace crud_application
             ProductDescription = productdescription;
             NetPrice = netprice;
             GrossPrice = grossprice;
+        }
+        public Product(int id, string productname, string productdescription, double netprice, double grossprice, DateTime priceactivefrom, DateTime priceactiveto)
+        {
+            IDProduct = id;
+            ProductName = productname;
+            ProductDescription = productdescription;
+            NetPrice = netprice;
+            GrossPrice = grossprice;
+            priceActiveFrom = priceactivefrom;
+            priceActiveTo = priceactiveto;
         }
     }
 }
