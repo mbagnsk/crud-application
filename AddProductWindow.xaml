@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:crud_application"
         mc:Ignorable="d"
-        Title="Dodaj produkt" Height="300" Width="300"
+        Title="Dodaj produkt" Height="310" Width="300"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -50,11 +50,11 @@
 
         <!-- Row 6 -->
         <TextBlock Text="Cena aktywna od: " Grid.Column="1" Grid.Row="6" Margin="5"/>
-        <DatePicker x:Name="NetPriceDatePicker" Grid.Column="2" Grid.Row="6" Margin="5"/>
+        <DatePicker x:Name="PriceActiveFromDatePicker" Grid.Column="2" Grid.Row="6" Margin="5"/>
 
         <!-- Row 7 -->
         <TextBlock Text="Cena aktywna do: " Grid.Column="1" Grid.Row="7" Margin="5"/>
-        <DatePicker x:Name="GrossPriceDatePicker" Grid.Column="2" Grid.Row="7" Margin="5"/>
+        <DatePicker x:Name="PriceActiveToDatePicker" Grid.Column="2" Grid.Row="7" Margin="5"/>
 
         <!-- Row 8 -->
         <Button x:Name="AddProductButton" Content="Dodaj produkt" Grid.Column="1" Grid.Row="8" Width="120" Margin="5" Click="AddProductButton_Click"/>

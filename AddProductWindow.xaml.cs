@@ -26,7 +26,13 @@ namespace crud_application
 
         private void AddProductButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DataWriter.AddProduct("detal5", "Opis detalu 5", 321, 333, DateTime.UtcNow, DateTime.UtcNow))
+            if (DataWriter.AddProduct(
+                ProductNameTextBox.Text,
+                ProductDescriptionTextBox.Text,
+                Convert.ToDouble(NetPriceTextBox.Text),
+                Convert.ToDouble(GrossPriceTextBox.Text),
+                Convert.ToDateTime(PriceActiveFromDatePicker.Text),
+                Convert.ToDateTime(PriceActiveToDatePicker.Text)))
                 MessageBox.Show("Dodano produkt!");
             else
                 MessageBox.Show("Błąd podczas dodawania produktu!");
