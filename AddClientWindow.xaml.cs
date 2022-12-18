@@ -30,8 +30,12 @@ namespace crud_application
             int localNumber = Int16.Parse(LocalNumberTextBox.Text);
             int phoneNumber = Int32.Parse(PhoneTextBox.Text);
 
-            DataWriter.AddClient(CompanyNameTextBox.Text, nip, StreetTextBox.Text, buildingNumber, localNumber, CityTextBox.Text, ZIPCodeTextBox.Text, EmailTextBox.Text, phoneNumber);
-            this.Close();
+            if (DataWriter.AddClient(CompanyNameTextBox.Text, nip, StreetTextBox.Text, buildingNumber, localNumber, CityTextBox.Text, ZIPCodeTextBox.Text, EmailTextBox.Text, phoneNumber))
+            {
+                this.Close();
+                MessageBox.Show("Dodano klienta.");
+            }
+            else MessageBox.Show("Błąd podczas dodawania klienta!");
         }
         private void CloseCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
