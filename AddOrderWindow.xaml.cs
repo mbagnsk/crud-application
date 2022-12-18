@@ -44,10 +44,10 @@ namespace crud_application
             Product product = ProductsComboBox.SelectedItem as Product;
             OrderElement orderElement = new OrderElement(product.IDProduct, product.ProductName, product.ProductDescription, product.NetPrice, product.GrossPrice, Convert.ToInt32(QuantityTextBox.Text));
             orderElements.Add(orderElement);
-            OrderElementDataGrid.ItemsSource = orderElements;
+            OrderElementsDataGrid.ItemsSource = orderElements;
             ProductsComboBox.SelectedIndex = -1;
             QuantityTextBox.Clear();
-            OrderElementDataGrid.Items.Refresh();
+            OrderElementsDataGrid.Items.Refresh();
         }
 
         private void AddOrderButton_Click(object sender, RoutedEventArgs e)
