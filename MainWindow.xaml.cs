@@ -35,6 +35,11 @@ namespace crud_application
             AddClientWindow addClientWindow = new AddClientWindow();
             addClientWindow.Show();
         }
+        private void AddProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddProductWindow addProductWindow = new AddProductWindow();
+            addProductWindow.Show();
+        }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -106,14 +111,6 @@ namespace crud_application
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void AddProductButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (DataWriter.AddProduct("detal5", "Opis detalu 5", 321, 333, DateTime.UtcNow, DateTime.UtcNow)) 
-                MessageBox.Show("Dodano produkt!");
-            else
-                MessageBox.Show("Błąd podczas dodawania produktu!");
         }
     }
 }
