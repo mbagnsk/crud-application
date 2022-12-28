@@ -48,3 +48,17 @@ Zadecydowano, aby w ramach projektu wykorzystać relacyjny model danych. Utworzo
     - IDInvoice - numer identyfikacyjny faktury,
     - IDProduct - numer identyfikacyjny produktu,
     - Quantity - ilość zamówionego produktu.
+    
+W ramach projektu zrealizowano również procedury wbudowane umożliwiające na dodanie oraz pobranie danych z bazy danych. Powodem, dla którego zadecydowano o wykorzystaniu procedur wbudowanych była możliwość ich wywołania z wielu poziomów tj. z aplikacji mobilnej lub webowej gdyby takowe powstały. Na poziomie procedur wbudowanych nie jest zapewniona transakcyjność operacji. Transakcyjność  jest zapewniana dopiero na poziomie logiki aplikacji desktopowej.  
+Utworzone procedury:
+  - AddClient - dodanie kontrahenta,
+  - AddInvoice - dodanie faktury,
+  - AddOrder - dodanie produktu do zamówienia ,
+  - AddProduct - dodanie oferowanego produktu,
+  - GetInvoices - pobranie faktur,
+  - GetOrderElements - pobranie produktów zamówionych w ramach faktury,
+  - GetInvoiceNetPrice - pobranie wartości netto zamówienia,
+  - GetInvoiceGrossPrice - probanie wartości brutto zamówienia.
+  
+
+  
