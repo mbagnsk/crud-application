@@ -77,13 +77,22 @@ Okno główne aplikacji umożliwia podejrzenie danych zebranych w tabeli INVOICE
 
 ### Dodaj produkt
 
+Wybranie opcji: "Dodaj produkt" otwarciem nowego okna, w którym będzie możliwość będzie wprowadzenia danych na temat nowego produktu. Wciścięcie przycisku: "Dodaj produkt" w dolnej części okna poskutkuje wprowadzeniem nowych danych do tabeli PRODUCTS.  
+
 ![image](https://user-images.githubusercontent.com/56918406/210274768-e79fd7af-c627-4df9-99a3-35e2764f3520.png)  
 
-Wybranie opcji: "Dodaj produkt" otwarciem nowego okna, w którym będzie możliwość będzie wprowadzenia danych na temat nowego produktu. Wciścięcie przycisku: "Dodaj produkt" w dolnej części okna poskutkuje wprowadzeniem nowych danych do tabeli PRODUCTS. Poprawne wykonanie się zapisu danych do bazy spowoduje pojawienie się okna informującego o poprawnym przebiegu operacji.  
+Poprawne wykonanie się zapisu danych do bazy spowoduje pojawienie się okna informującego o poprawnym przebiegu operacji.  
 
 ![image](https://user-images.githubusercontent.com/56918406/210274945-e88cd02d-92ff-45ec-b609-2968ceda96ca.png)  
 
-W przypadku gdyby operacja zapisu zakończyła się niepowodzeniem pojawia się okno informujące błędzie podczas wykonywanego zapisu a wszystkie dane wprowadzone do tabeli w ramach operacji zostają wycofane.
+Gdy wprowadzone dane będą nieprawidłowe nie zostanie wykonana operacja zapisu danych do bazy a użytkonikowi zostanie przedstwawiony następujący komunikat:  
+
+![image](https://user-images.githubusercontent.com/56918406/210276263-5e0ea5c9-e79e-4ecd-8ba5-afe43ab09e27.png)  
+
+W przypadku gdyby operacja zapisu zakończyła się niepowodzeniem pojawia się okno informujące błędzie podczas wykonywanego zapisu a wszystkie dane wprowadzone do tabeli w ramach operacji zostają wycofane.  
+
+![image](https://user-images.githubusercontent.com/56918406/210276399-a3772137-5a05-4a5b-bb4a-6dd6b0615266.png)
+
 
 
 
