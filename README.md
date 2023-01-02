@@ -65,6 +65,26 @@ Utworzone procedury:
   - GetOrderElements - pobranie produktów zamówionych w ramach faktury,
   - GetInvoiceNetPrice - pobranie wartości netto zamówienia,
   - GetInvoiceGrossPrice - probanie wartości brutto zamówienia.
+
+Uwierzytelnianie użytkownika odbywa się na postawie konta Windows użytkownika bazy. Jeśli użytkownik Windows ma do niej dostęp nie potrzebne są kolejne logowania lub weryfikowanie torżsamości.
+
+## Aplikacja okienkowa
+
+![image](https://user-images.githubusercontent.com/56918406/210274141-6d962dc5-f366-4902-92b5-5d654b9ad0c5.png)
+Aplikacja w założeniu miała umożliwiać na prezentowanie, dodawanie, modyfikowane danych w bazie danych.  
+Okno główne aplikacji umożliwia podejrzenie danych zebranych w tabeli INVOICES, umożliwia na wyszukiwanie umów ze względu na takie kryteria jak: nazwa klienta oraz numer faktury. Wybór jednego z przycisków pozwoli na: dodanie nowego zamówienia, dodanie nowego klienta, dodanie nowego produktu. Podwójne klikniecie PPM na jedną z faktur przedstawionych w tabeli umożliwi na podgląd jej szczegółów. Dodatkowo przyciski: wyczyść filtry pozwalają wyczyścić wszystkie dane wprowadzone do pól z kryteriami wyszukiwania, a przycisk odśwież pozwala na odświeżenie danych oraz ponowne ich pobranie z bazy danych.
+
+### Dodaj produkt
+
+![image](https://user-images.githubusercontent.com/56918406/210274768-e79fd7af-c627-4df9-99a3-35e2764f3520.png)
+Wybranie opcji: "Dodaj produkt" otwarciem nowego okna, w którym będzie możliwość będzie wprowadzenia danych na temat nowego produktu. Wciścięcie przycisku: "Dodaj produkt" w dolnej części okna poskutkuje wprowadzeniem nowych danych do tabeli PRODUCTS. Poprawne wykonanie się zapisu danych do bazy spowoduje pojawienie się okna informującego o poprawnym przebiegu operacji.
+![image](https://user-images.githubusercontent.com/56918406/210274945-e88cd02d-92ff-45ec-b609-2968ceda96ca.png)
+W przypadku gdyby operacja zapisu zakończyła się niepowodzeniem pojawia się okno informujące błędzie podczas wykonywanego zapisu a wszystkie dane wprowadzone do tabeli w ramach operacji zostają wycofane.
+
+
+
+
+
   
 
   
