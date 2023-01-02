@@ -26,13 +26,26 @@ namespace crud_application
 
         private void AddProductButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DataWriter.AddProduct(
-                ProductNameTextBox.Text,
-                ProductDescriptionTextBox.Text,
-                Convert.ToDouble(NetPriceTextBox.Text),
-                Convert.ToDouble(GrossPriceTextBox.Text),
-                Convert.ToDateTime(PriceActiveFromDatePicker.Text),
-                Convert.ToDateTime(PriceActiveToDatePicker.Text)))
+            string productName, productDescription;
+            double netPrice, grossPrice;
+            DateTime priceActiveFrom, priceActiveTo;
+
+            try
+            {
+                productName = ProductNameTextBox.Text;
+                productDescription = ProductDescriptionTextBox.Text;
+                netPrice = Convert.ToDouble(NetPriceTextBox.Text);
+                grossPrice = Convert.ToDouble(GrossPriceTextBox.Text);
+                priceActiveFrom = Convert.ToDateTime(PriceActiveFromDatePicker.Text);
+                priceActiveTo = Convert.ToDateTime(PriceActiveToDatePicker.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Błędne dane!");
+                return;
+            }
+
+            if (DataWriter.AddProduct(productName, productDescription, netPrice, grossPrice, priceActiveFrom, priceActiveTo))
                 MessageBox.Show("Dodano produkt!");
             else
                 MessageBox.Show("Błąd podczas dodawania produktu!");
