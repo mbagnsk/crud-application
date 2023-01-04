@@ -31,13 +31,13 @@ namespace crud_application
             DateTime priceActiveFrom, priceActiveTo;
 
             try
-            {
-                productName = ProductNameTextBox.Text;
-                productDescription = ProductDescriptionTextBox.Text;
-                netPrice = Convert.ToDouble(NetPriceTextBox.Text);
-                grossPrice = Convert.ToDouble(GrossPriceTextBox.Text);
-                priceActiveFrom = Convert.ToDateTime(PriceActiveFromDatePicker.Text);
-                priceActiveTo = Convert.ToDateTime(PriceActiveToDatePicker.Text);
+            { 
+                productName = String.IsNullOrWhiteSpace(ProductNameTextBox.Text) ? String.Empty : Convert.ToString(ProductNameTextBox.Text) ;
+                productDescription = String.IsNullOrWhiteSpace(ProductDescriptionTextBox.Text) ? String.Empty : ProductDescriptionTextBox.Text;
+                netPrice = Convert.ToDouble(NetPriceTextBox.Text) > 0 ? Convert.ToDouble(NetPriceTextBox.Text) : -1;
+                grossPrice = Convert.ToDouble(GrossPriceTextBox.Text) > 0 ? Convert.ToDouble(GrossPriceTextBox.Text) : -1;
+                priceActiveFrom = DataValidator.isDateTime(PriceActiveFromDatePicker.Text) ? Convert.ToDateTime(PriceActiveFromDatePicker.Text) : DateTime.MinValue;
+                priceActiveTo = DataValidator.isDateTime(PriceActiveToDatePicker.Text) ? Convert.ToDateTime(PriceActiveToDatePicker.Text) : DateTime.MinValue;
             }
             catch
             {
@@ -45,8 +45,16 @@ namespace crud_application
                 return;
             }
 
+            if (productName == String.Empty || productDescription == String.Empty || netPrice == -1 || grossPrice == -1 || priceActiveFrom == DateTime.MinValue || priceActiveTo == DateTime.MinValue || priceActiveFrom >= priceActiveTo)
+            {
+                MessageBox.Show("Błędne dane!");
+                return;
+            }
             if (DataWriter.AddProduct(productName, productDescription, netPrice, grossPrice, priceActiveFrom, priceActiveTo))
+            {
                 MessageBox.Show("Dodano produkt!");
+                this.Close();
+            }
             else
                 MessageBox.Show("Błąd podczas dodawania produktu!");
         }
