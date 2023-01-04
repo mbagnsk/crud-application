@@ -77,7 +77,7 @@ Okno główne aplikacji umożliwia podejrzenie danych zebranych w tabeli INVOICE
 
 ### Dodaj produkt
 
-Wybranie opcji: "Dodaj produkt" otwarciem nowego okna, w którym będzie możliwość będzie wprowadzenia danych na temat nowego produktu. Wciścięcie przycisku: "Dodaj produkt" w dolnej części okna poskutkuje wprowadzeniem nowych danych do tabeli PRODUCTS.  
+Wybranie opcji: "Dodaj produkt" otwiera nowe okno, w którym będzie możliwość będzie wprowadzenia danych na temat nowego produktu. Wciścięcie przycisku: "Dodaj produkt" w dolnej części okna poskutkuje wprowadzeniem nowych danych do tabeli PRODUCTS.  
 
 ![image](https://user-images.githubusercontent.com/56918406/210274768-e79fd7af-c627-4df9-99a3-35e2764f3520.png)  
 
@@ -93,11 +93,44 @@ W przypadku gdyby operacja zapisu zakończyła się niepowodzeniem pojawia się 
 
 ![image](https://user-images.githubusercontent.com/56918406/210276399-a3772137-5a05-4a5b-bb4a-6dd6b0615266.png)
 
-
-
-
-
-
+### Dodaj klienta
   
+Wybranie opcji: "Dodaj klienta" otwiera nowe okno, w którym jest możliwość wprowadzenia danych nowego klienta. Dane można zatwierdzić wybierając przycisk: "Dodaj klienta". Przyciśnięcie przycisku skutkuje dodaniem danych na temat nowego klienta do tabeli CUSTOMERS.  
 
+![image](https://user-images.githubusercontent.com/56918406/210640896-be1fd6c4-72f3-42ce-a3f2-28a9303e0339.png)  
+
+Podobnie jak w przypadku dodawania nowego produktu, aplikacja może zwrócić informacje na temat próby wprowadznenia niepoprawnych danych lub niepoprawnie przeprowadzanej operacji dodania nowego klienta.
+
+### Dodaj zamówienie
+
+Wybranie opcji: "Dodaj zamówienie" otwiera nowe okno, w którym jest możliwość wprowadzenia danych na temat nowego zamówienia. Dodanie zamówienia polega na wybraniu odpowiedniego klienta z listy, wybraniu produktu z listy oraz wpisaniu ilości wybranego produktu. Po wyborze produktu oraz jego ilości należy wybrać przycisk: "Dodaj do zamówienia". Wybór tego przycisku skutkuje dodaniem wybranego produktu oraz jego ilości do zestawienia, które wyświetlane jest przedstawione poniżej przycisku. Po dodaniu wszystkich elementów zamówienia należy wybrać przycisk: "Dodaj zamówienie". W tym momencie następuje wywołanie wbudowanej procedury SQL, która dodaje odpowiednią fakturę do tabeli INVOICES oraz powiązane z nią zamówienie do tabeli ORDERS.  
+
+![image](https://user-images.githubusercontent.com/56918406/210642507-12e37793-13d1-458b-931b-8745af325be3.png)
+
+Podobnie jak we wcześniejszych przypadkach użytkownik zostanie poinformowany o poprawności operacji, jej niepowodzeniu lub o błędnie wprowadzonych danych.
+
+### Filtrowanie faktur
+
+Aplikacja umożliwia na filtrowanie zestawienia faktur dla wyszukania konkretnej faktury lub zestawu faktur. Filtrowanie to odbywa się z wykorzystaniem technologii Linq, która umożliwia na przeszukiwanie kolekcji danych podobnie jak w SQL. Kryteria filtrowania wprowadza się do pól: "Nazwa klienta" oraz "Numer faktury". To na podstawie tych danych przeszukiwana jest kolekcja danych. Wyszukiwanie może odbywać się dla każdego z kryteriów osobno lub mogą one występować razem.  
+
+![image](https://user-images.githubusercontent.com/56918406/210643874-fc5f529e-581f-400d-ae3a-63993bad1d52.png)
+
+### Szczegóły zamówienia
+
+Podwójne kliknięcie prawym przyciskiem myszy na fakturę w ramach zestawienia umożliwia otwarcie okna "Szczegóły zamówienia". W oknie są zebrane takie dane jak:
+  - numer faktury,
+  - nazwa klieta,
+  - czy zamówienie jest aktywne,
+  - wartość zamówienia netto,
+  - wartość zamówienia brutto,
+  - data i czas złożenia zamówienia,
+  - data wymagalności,
+  - czy zamówienie jest opłacone,
+  - kwotę, którą wpłacił klient w ramach wystawionej faktury,
+  - produkty oraz ich ilości na fakturze.  
   
+  ![image](https://user-images.githubusercontent.com/56918406/210644529-98de4dc1-6d1a-496e-ac8a-98ac51d3f34d.png)
+ 
+ ## System kontroli wersji
+ 
+ W ramach projektu wykorzytywano technologię Git oraz serwis GitHub w celu wersjonowania kodu. Umożliwiało to tworzenie kodu równolegle na różnych branch'ach oraz posiadania cały czas stabilnej wersji programu na branch'u głównym - masterze. Wersjonowanie kodu pozwalało na przywrócenie wcześniejszej wersji w przypadku gdy nowe rozwiązanie nie działało poprawnie lub niezadowalało autorów.
