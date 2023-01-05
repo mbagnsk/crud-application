@@ -11,7 +11,7 @@ namespace crud_application
 {
     public static class DataWriter
     {
-        public static bool AddClient(string company, int nip, string street, int building, int local, string city, string zipCode, string email, int phoneNumber)
+        public static bool AddClient(string company, uint nip, string street, int building, int local, string city, string zipCode, string email, int phoneNumber)
         {
             using (SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConnectionDBHelper.connectionStringValue("WarehouseManagerDB")))
             {

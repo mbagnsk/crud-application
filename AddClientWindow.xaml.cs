@@ -25,17 +25,39 @@ namespace crud_application
 
         private void AddClientButton_Click(object sender, RoutedEventArgs e)
         {
-            int nip = Int32.Parse(NipTextBox.Text);
-            int buildingNumber = Int16.Parse(BuildingNumberTextBox.Text);
-            int localNumber = Int16.Parse(LocalNumberTextBox.Text);
-            int phoneNumber = Int32.Parse(PhoneTextBox.Text);
+            uint nip;
+            int buildingNumber, localNumber, phoneNumber;
+            string companyName, street, city, zipCode, email;
 
-            if (DataWriter.AddClient(CompanyNameTextBox.Text, nip, StreetTextBox.Text, buildingNumber, localNumber, CityTextBox.Text, ZIPCodeTextBox.Text, EmailTextBox.Text, phoneNumber))
+            try
             {
-                this.Close();
-                MessageBox.Show("Dodano klienta.");
+                nip = UInt32.Parse(NipTextBox.Text) > 999999999 ? UInt32.Parse(NipTextBox.Text) : 1;
+                buildingNumber = Int16.Parse(BuildingNumberTextBox.Text) > 0 ? Int16.Parse(BuildingNumberTextBox.Text) : -1;
+                localNumber = Int16.Parse(LocalNumberTextBox.Text) > -1 ? Int16.Parse(LocalNumberTextBox.Text) : 0;
+                phoneNumber = Int64.Parse(PhoneTextBox.Text) > 99999999 ? Int32.Parse(PhoneTextBox.Text) : -1;
+                companyName = String.IsNullOrWhiteSpace(CompanyNameTextBox.Text) ? String.Empty : CompanyNameTextBox.Text;
+                street = String.IsNullOrWhiteSpace(StreetTextBox.Text) ? String.Empty : StreetTextBox.Text;
+                city = String.IsNullOrWhiteSpace(CityTextBox.Text) ? String.Empty : CityTextBox.Text;
+                zipCode = String.IsNullOrWhiteSpace(ZIPCodeTextBox.Text) ? String.Empty : ZIPCodeTextBox.Text;
+                email = String.IsNullOrWhiteSpace(EmailTextBox.Text) ? String.Empty : EmailTextBox.Text;
             }
-            else MessageBox.Show("Błąd podczas dodawania klienta!");
+            catch
+            {
+                MessageBox.Show("Błędne dane!");
+                return;
+            }
+            if (nip == 1 || buildingNumber == -1 || phoneNumber == -1 || companyName == String.Empty || street == String.Empty || city == String.Empty || zipCode == String.Empty || email == String.Empty)
+            {
+                MessageBox.Show("Błędne dane!");
+                return;
+            }
+            if (DataWriter.AddClient(companyName, nip, street, buildingNumber, localNumber, city, zipCode, email, phoneNumber))
+            {
+                MessageBox.Show("Dodano klienta.");
+                this.Close();
+            }
+            else 
+                MessageBox.Show("Błąd podczas dodawania klienta!");
         }
         private void CloseCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
