@@ -7,10 +7,6 @@
         mc:Ignorable="d"
         Title="Dodaj zamówienie" Height="500" Width="450"
         WindowStartupLocation="CenterScreen">
-    <Window.CommandBindings>
-        <CommandBinding Command="ApplicationCommands.Close"
-                        Executed="CloseCommandHandler"/>
-    </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
@@ -71,6 +67,6 @@
         
         <!-- Row 9 -->
         <Button x:Name="AddOrderButton" Content ="Dodaj zamówienie" Width="120" Grid.Column="1" Grid.Row="9" Margin="5" Click="AddOrderButton_Click"/>
-        <Button x:Name="CancelButton" Content="Anuluj" Width="120" HorizontalAlignment="Right" Grid.Column="2" Grid.Row="9" Margin="5" Command="ApplicationCommands.Close"/>
+        <Button x:Name="CancelButton" Content="Anuluj" Width="120" HorizontalAlignment="Right" Grid.Column="2" Grid.Row="9" Margin="5" Click="CancelButton_Click"/>
     </Grid>
 </Window>

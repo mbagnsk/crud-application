@@ -34,20 +34,40 @@ namespace crud_application
             e.Row.Header = (e.Row.GetIndex()+1).ToString();
         }
 
-        private void CloseCommandHandler(object sender, ExecutedRoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void AddToOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            Product product = ProductsComboBox.SelectedItem as Product;
-            OrderElement orderElement = new OrderElement(product.IDProduct, product.ProductName, product.ProductDescription, product.NetPrice, product.GrossPrice, Convert.ToInt32(QuantityTextBox.Text));
-            orderElements.Add(orderElement);
-            OrderElementsDataGrid.ItemsSource = orderElements;
-            ProductsComboBox.SelectedIndex = -1;
-            QuantityTextBox.Clear();
-            OrderElementsDataGrid.Items.Refresh();
+            int quantity;
+            Product product;
+            try
+            {
+                product = ProductsComboBox.SelectedItem as Product;
+                quantity = Convert.ToInt32(QuantityTextBox.Text) > 0 ? Convert.ToInt32(QuantityTextBox.Text) : -1;
+            }
+            catch
+            {
+                MessageBox.Show("Błędne dane!");
+                return;
+            }
+            if (product == null || quantity == -1)
+            {
+                MessageBox.Show("Błędne dane!");
+                return;
+            }
+
+            try
+            {
+                OrderElement orderElement = new OrderElement(product.IDProduct, product.ProductName, product.ProductDescription, product.NetPrice, product.GrossPrice, quantity);
+                orderElements.Add(orderElement);
+                OrderElementsDataGrid.ItemsSource = orderElements;
+                ProductsComboBox.SelectedIndex = -1;
+                QuantityTextBox.Clear();
+                OrderElementsDataGrid.Items.Refresh();
+            }
+            catch
+            {
+                MessageBox.Show("Błąd podczas dodawania produktu do zamówienia!");
+                return;
+            }
         }
 
         private void AddOrderButton_Click(object sender, RoutedEventArgs e)
@@ -59,6 +79,11 @@ namespace crud_application
                 MessageBox.Show("Dodano zamówienie.");
             }
             else MessageBox.Show("Błąd podczas dodawania zamówienia!");
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
