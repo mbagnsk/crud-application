@@ -25,13 +25,13 @@ namespace crud_application
 
         private void AddClientButton_Click(object sender, RoutedEventArgs e)
         {
-            uint nip;
+            long nip;
             int buildingNumber, localNumber, phoneNumber;
             string companyName, street, city, zipCode, email;
 
             try
             {
-                nip = UInt32.Parse(NipTextBox.Text) > 999999999 ? UInt32.Parse(NipTextBox.Text) : 1;
+                nip = Int64.Parse(NipTextBox.Text) > 999999999 ? Int64.Parse(NipTextBox.Text) : 1;
                 buildingNumber = Int16.Parse(BuildingNumberTextBox.Text) > 0 ? Int16.Parse(BuildingNumberTextBox.Text) : -1;
                 localNumber = Int16.Parse(LocalNumberTextBox.Text) > -1 ? Int16.Parse(LocalNumberTextBox.Text) : 0;
                 phoneNumber = Int64.Parse(PhoneTextBox.Text) > 99999999 ? Int32.Parse(PhoneTextBox.Text) : -1;
