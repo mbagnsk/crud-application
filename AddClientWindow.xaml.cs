@@ -59,7 +59,8 @@ namespace crud_application
             else 
                 MessageBox.Show("Błąd podczas dodawania klienta!");
         }
-        private void CloseCommandHandler(object sender, ExecutedRoutedEventArgs e)
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
